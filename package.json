@@ -1,0 +1,35 @@
+{
+	"name": "vue-alias-skip",
+	"displayName": "vue别名跳转",
+	"description": "vue项目插件，@别名路径一键跳转，支持js文件和vue文件",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.38.0"
+	},
+	"keywords": ["@", "alias", "vue", "webpack", "vue别名跳转"],
+	"publisher": "lihuiwang",
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./src/extension.js",
+	"contributes": {
+	},
+	"repository": {
+        "type": "git",
+        "url": "https://github.com/sxei/vscode-plugin-demo"
+    },
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.38.0",
+		"eslint": "^5.13.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.2.0"
+	}
+}
