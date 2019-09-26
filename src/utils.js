@@ -19,7 +19,7 @@ const screeningPath = function (linetext){
  * @returns 包含src的base路径
  */
 const rootPath = function (presentPath){
-    let srcarr = presentPath.match(/^.+src\\/)
+    let srcarr = presentPath.match(/^.+src/)
     let baseSrc = ''
     if(srcarr){
         baseSrc = srcarr[0]
@@ -39,7 +39,6 @@ const joiningSuffix = function (targetPath){
         }else if(fs.existsSync(`${targetPath}.js`)){
             return `${targetPath}.js`
         }else{
-            console.log('5555')
             return ''
         }
     }
