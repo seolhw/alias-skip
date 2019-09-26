@@ -9,4 +9,4 @@
 只支持vue项目中的src目录下的js和vue文件
 
 ## 效果图
-![效果图](https://doc.lihuiwang.net/img/GIF.gif)
+![效果图](https://doc.lihuiwang.net/img/xiaoguotu.gif)
