@@ -6,5 +6,4 @@
 
 鼠标移动到路径上，按`ctrl`+`click`就会跳转
 
-## 效果展示
-![效果展示](./images/GIF.gif)
+只支持vue项目中的src目录下的js和vue文件
