@@ -6,8 +6,8 @@
 	"engines": {
 		"vscode": "^1.38.0"
 	},
-	"keywords": ["@", "alias", "vue", "webpack", "vue别名跳转"],
-	"publisher": "lihuiwang",
+	"keywords": ["alias", "vue", "webpack", "vue别名跳转"],
+	"publisher": "seolhw",
 	"categories": [
 		"Other"
 	],
