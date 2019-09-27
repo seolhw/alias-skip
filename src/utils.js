@@ -1,30 +1,46 @@
 const fs = require('fs')
 const path = require('path')
+const vscode = require('vscode');
+const { mappings, rootpath: rootfile, allowedsuffix } = vscode.workspace.getConfiguration().get('alias-skip')
 /**
  * 从文本中过滤出路径
  * @param {string} linetext 包含路径的字符串
  * @returns 目标路径
  */
 const screeningPath = function (linetext){
-    let arr = linetext.match(/('@.+')|("@.+")/) // 正则匹配
-    let text = ''
-    if(arr){
-        text = arr[0].substring(3,arr[0].length-1)
+    for (const key in mappings) {
+        if (mappings.hasOwnProperty(key)) {
+            const element = mappings[key];
+            let r = new RegExp(`('${key}.+')|("${key}.+")`)
+            let arr = linetext.match(r) // 正则匹配
+            if(arr){
+                let text = arr[0].replace(key,element)
+                return text.substring(2,text.length-1)
+            }
+        }
     }
-    return text
+    return ''
 }
 /**
- * 通过当前文件的绝对路径解析出包含src的base路径
+ * 通过当前文件的绝对路径和配置的根文件解析出根目录
  * @param {*} presentPath 当前文件路径
- * @returns 包含src的base路径
+ * @returns 输出根目录
  */
 const rootPath = function (presentPath){
-    let srcarr = presentPath.match(/^.+src/)
-    let baseSrc = ''
-    if(srcarr){
-        baseSrc = srcarr[0]
+    // 先拿到项目根目录,切割绝对路径
+    let arr = presentPath.split(path.sep);
+    let len = arr.length
+    let base = ''
+    for (let index = 0; index < len; index++) {
+        let z = fs.existsSync(path.resolve(...arr,rootfile))
+        if(z) {
+            base = path.resolve(...arr)
+            break
+        }else{
+            arr.pop()
+        }
     }
-    return baseSrc
+    return base
 }
 /**
  * 通过目标的路径拼接后缀并验证该文件存在
@@ -34,15 +50,16 @@ const rootPath = function (presentPath){
 const joiningSuffix = function (targetPath){
     const extname = path.extname(targetPath)
     if(!extname){
-        if(fs.existsSync(`${targetPath}.vue`)){
-            return `${targetPath}.vue`
-        }else if(fs.existsSync(`${targetPath}.js`)){
-            return `${targetPath}.js`
-        }else{
-            return ''
+        for (const item of allowedsuffix) {
+            if(fs.existsSync(`${targetPath}.${item}`)){
+                return `${targetPath}.${item}`
+            } 
         }
+    }else if(fs.existsSync(targetPath)){
+        return targetPath
+    }else{
+        return ''
     }
-    return targetPath
 }
 /**
  * 从文本中过滤出相对路径
