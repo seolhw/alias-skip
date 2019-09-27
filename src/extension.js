@@ -28,7 +28,6 @@ exports.activate = function(context) {
             }else if(u){
                 targetPath = path.resolve(workDir,u)
             }
-            console.log(z,q)
             const k = joiningSuffix(targetPath) // 文件存在就返回目标文件，不存在就返回空字符串
             if(!k) return
             return new vscode.Location(vscode.Uri.file(k),new vscode.Position(0, 0))
