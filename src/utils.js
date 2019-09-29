@@ -55,6 +55,12 @@ const joiningSuffix = function (targetPath){
                 return `${targetPath}.${item}`
             } 
         }
+        targetPath = path.join(targetPath,'index')
+        for (const item of allowedsuffix) {
+            if(fs.existsSync(`${targetPath}.${item}`)){
+                return `${targetPath}.${item}`
+            } 
+        }
     }else if(fs.existsSync(targetPath)){
         return targetPath
     }else{
