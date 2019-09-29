@@ -32,9 +32,9 @@ const rootPath = function (presentPath){
     let len = arr.length
     let base = ''
     for (let index = 0; index < len; index++) {
-        let z = fs.existsSync(path.resolve(...arr,rootfile))
+        let z = fs.existsSync(path.join(...arr,rootfile))
         if(z) {
-            base = path.resolve(...arr)
+            base = path.join(...arr)
             break
         }else{
             arr.pop()
