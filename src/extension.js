@@ -8,7 +8,7 @@ const { screeningPath, rootPath, joiningSuffix, screeningRelativePath } = requir
  * @param {*} context 插件上下文
  */
 exports.activate = function(context) {
-    console.log('恭喜，您的扩展“vue-alias-skip”已被激活！');
+    console.log('恭喜，您的扩展“alias-skip”已被激活！');
     const hoverHander = vscode.languages.registerDefinitionProvider([
             { scheme: 'file', language: 'vue' },
             { scheme: 'file', language: 'javascript' },
@@ -40,5 +40,5 @@ exports.activate = function(context) {
  * 插件被释放时触发
  */
 exports.deactivate = function() {
-    console.log('您的扩展“vue-alias-skip”已被释放！')
+    console.log('您的扩展“valias-skip”已被释放！')
 };
