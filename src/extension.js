@@ -20,7 +20,7 @@ exports.activate = function(context) {
             const workDir = path.dirname(fileName); // 当前文件的绝对路径
             const linetext = document.lineAt(position).text; // 当前行字符串
             const q = screeningPath(linetext) // 路由别名目标路径
-            const z = rootPath(workDir) // 项目根目录
+            const z = rootPath(workDir,context) // 项目根目录
             const u = screeningRelativePath(linetext) // 相对路径的目标路径
             let targetPath =  '' // 要跳转的目标路径
             if(q && z){
