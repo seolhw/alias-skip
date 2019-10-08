@@ -2,7 +2,7 @@
 	"name": "vue-alias-skip",
 	"displayName": "别名路径跳转",
 	"description": "别名路径跳转插件，支持任何项目，可以自由配置映射规则，自由配置可缺省后缀名列表",
-	"version": "0.0.13",
+	"version": "0.0.14",
 	"engines": {
 		"vscode": "^1.30.0"
 	},
