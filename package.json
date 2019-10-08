@@ -2,11 +2,18 @@
 	"name": "vue-alias-skip",
 	"displayName": "别名路径跳转",
 	"description": "别名路径跳转插件，支持任何项目，可以自由配置映射规则，自由配置可缺省后缀名列表",
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"engines": {
 		"vscode": "^1.30.0"
 	},
-	"keywords": ["alias", "vue", "webpack", "vue别名跳转", "别名跳转", "react"],
+	"keywords": [
+		"alias",
+		"vue",
+		"webpack",
+		"vue别名跳转",
+		"别名跳转",
+		"react"
+	],
 	"publisher": "lihuiwang",
 	"categories": [
 		"Other"
@@ -35,7 +42,12 @@
 				},
 				"alias-skip.allowedsuffix": {
 					"type": "array",
-					"default": ["js", "vue", "jsx", "ts"],
+					"default": [
+						"js",
+						"vue",
+						"jsx",
+						"ts"
+					],
 					"description": "可缺省后缀名的文件列表"
 				}
 			}
