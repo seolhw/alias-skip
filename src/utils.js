@@ -14,20 +14,28 @@ const screeningPath = function (linetext){
             let r = new RegExp(`('${key}.+')|("${key}.+")`)
             let arr = linetext.match(r) // 正则匹配
             if(arr){
-                let text = arr[0].replace(key,element)
-                return text.substring(2,text.length-1)
+                let text = arr[0].replace(key,element.substring(1))
+                return text.replace(/'|"/g,'').replace(/^\//,'')
             }
         }
     }
     return ''
 }
 /**
- * 通过当前文件的绝对路径和配置的根文件解析出根目录
+ * 通过当前文件的绝对路径和配置的根文件解析出根目录，并储存已获取的项目根目录
  * @param {*} presentPath 当前文件路径
+ * @param {*} context 当前上下文对象
  * @returns 输出根目录
  */
-const rootPath = function (presentPath){
-    // 先拿到项目根目录,切割绝对路径
+const rootPath = function (presentPath,context){
+    const memento = context.workspaceState
+    let rootList = memento.get('rootList', [])
+    for (const item of rootList) {
+      if(presentPath.indexOf(item) === 0){
+        console.log('该根目录已经被缓存===>',item)
+        return item
+      }
+    }
     let arr = presentPath.split(path.sep);
     let len = arr.length
     let base = ''
@@ -35,7 +43,9 @@ const rootPath = function (presentPath){
         let z = fs.existsSync(path.join(...arr,rootfile))
         if(z) {
             base = path.join(...arr)
-            break
+            memento.update('rootList',[...rootList,base])
+            console.log('该根目录是新的===>',base)
+            return base
         }else{
             arr.pop()
         }

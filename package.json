@@ -43,7 +43,7 @@
 	},
 	"repository": {
         "type": "git",
-        "url": "https://gitee.com/seolhw/vue-alias-skip.git"
+        "url": "https://gitee.com/seolhw/alias-skip.git"
     },
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
