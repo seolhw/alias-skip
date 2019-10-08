@@ -29,4 +29,4 @@
 ```
 
 ## 效果图
-![效果图](https://github.com/seolhw/alias-skip/blob/master/images/xiaoguotu.gif)
+![效果图](https://doc.lihuiwang.net/img/xiaoguotu.gif)
