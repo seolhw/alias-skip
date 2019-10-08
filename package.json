@@ -17,16 +17,16 @@
 	"icon": "images/logo.png",
 	"main": "./src/extension.js",
 	"contributes": {
-		"configuration":{
+		"configuration": {
 			"type": "object",
 			"title": "alias-skip",
-			"properties": {		
+			"properties": {
 				"alias-skip.mappings": {
-						"type": "object",
-						"default": {
-							"@":"/src"
-						},
-						"description": "路径映射，例如{'@':'/src','components':'/src/components'}，/表示项目根目录"
+					"type": "object",
+					"default": {
+						"@": "/src"
+					},
+					"description": "路径映射，例如{'@':'/src','components':'/src/components'}，/表示项目根目录"
 				},
 				"alias-skip.rootpath": {
 					"type": "string",
@@ -35,16 +35,16 @@
 				},
 				"alias-skip.allowedsuffix": {
 					"type": "array",
-					"default": ["js","vue","jsx","ts"],
+					"default": ["js", "vue", "jsx", "ts"],
 					"description": "可缺省后缀名的文件列表"
 				}
 			}
-    }
+		}
 	},
 	"repository": {
-        "type": "git",
-        "url": "https://gitee.com/seolhw/alias-skip.git"
-    },
+		"type": "git",
+		"url": "https://github.com/seolhw/alias-skip.git"
+	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
