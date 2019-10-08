@@ -22,7 +22,7 @@
     "alias-skip.allowedsuffix": ["js","vue","jsx","ts"]  // 默认有这四项
 ```
 
-- 判断项目根目录的依据，默认为package.json，即存在该文件的目录为项目根目录
+- 判断项目根目录的依据，默认为package.json，即存在该文件的目录为项目根目录，例如小程序项目可以改成app.json
 
 ```
     "alias-skip.rootpath": "package.json"
