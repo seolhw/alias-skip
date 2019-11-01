@@ -8,15 +8,17 @@ const { mappings, rootpath: rootfile, allowedsuffix } = vscode.workspace.getConf
  * @returns 目标路径
  */
 const screeningPath = function (linetext){
-    for (const key in mappings) {
-        if (mappings.hasOwnProperty(key)) {
-            const element = mappings[key];
-            let r = new RegExp(`('${key}.+')|("${key}.+")`)
-            let arr = linetext.match(r) // 正则匹配
-            if(arr){
-                let text = arr[0].replace(key,element.substring(1))
-                return text.replace(/'|"/g,'').replace(/^\//,'')
+    let c =  /('.+')|(".+")/
+    let arr = linetext.match(c)
+    if(arr){
+        let text = arr[0].substring(1,arr[0].length-1)
+        let [key,...m] = text.split('/')
+        if(mappings.hasOwnProperty(key)){
+            let e = mappings[key]
+            if(e[0]==='/'){
+                e = e.substring(1)
             }
+            return path.join(e,...m)
         }
     }
     return ''
@@ -32,7 +34,6 @@ const rootPath = function (presentPath,context){
     let rootList = memento.get('rootList', [])
     for (const item of rootList) {
       if(presentPath.indexOf(item) === 0){
-        console.log('该根目录已经被缓存===>',item)
         return item
       }
     }
@@ -44,7 +45,6 @@ const rootPath = function (presentPath,context){
         if(z) {
             base = path.join(...arr)
             memento.update('rootList',[...rootList,base])
-            console.log('该根目录是新的===>',base)
             return base
         }else{
             arr.pop()
