@@ -8,7 +8,7 @@
   },
   "scripts": {
     "compile": "tsc -p ./",
-    "dev": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./"
   },
   "keywords": [
     "alias",
