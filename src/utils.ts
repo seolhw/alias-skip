@@ -84,7 +84,7 @@ const joiningSuffix = function (targetPath: string) {
  * @returns 目标路径的相对路径
  */
 const screeningRelativePath = function (linetext: string) {
-  let arr = linetext.match(/('\..+')|("\.+")/) // 正则匹配
+  let arr = linetext.match(/('.+')|(".+")/) // 正则匹配
   let text = ''
   if (arr) {
     text = arr[0].substring(1, arr[0].length - 1)
