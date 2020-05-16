@@ -29,4 +29,4 @@
 ```
 
 ## 效果图
-![效果图](https://doc.lihuiwang.net/img/xiaoguotu.gif)
+![效果图](https://vscode.lihuiwang.net/%E6%95%88%E6%9E%9C%E5%9B%BE.gif)
