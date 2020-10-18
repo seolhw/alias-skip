@@ -10,7 +10,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "login": "vsce login lihuiwang",
-    "patch": "vsce publish patch"
+    "patch": "yarn run compile && vsce publish patch"
   },
   "keywords": [
     "alias",
