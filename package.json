@@ -8,7 +8,9 @@
   },
   "scripts": {
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "login": "vsce login lihuiwang",
+    "patch": "vsce publish patch"
   },
   "keywords": [
     "alias",
