@@ -5,6 +5,9 @@ const path = require('path')
 const activate = function (context: vscode.ExtensionContext) {
   const hoverHander = vscode.languages.registerDefinitionProvider([
     { scheme: 'file', language: 'vue' },
+    { scheme: 'file', language: 'scss' },
+    { scheme: 'file', language: 'css' },
+    { scheme: 'file', language: 'less' },
     { scheme: 'file', language: 'javascript' },
     { scheme: 'file', language: 'typescript' },
     { scheme: 'file', language: 'javascriptreact' }
