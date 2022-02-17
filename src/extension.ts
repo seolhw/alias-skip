@@ -15,10 +15,14 @@ const activate = function (context: vscode.ExtensionContext) {
     provideDefinition(document, position, token) {
       const fileName = document.fileName; // 当前文件的绝对路径加文件名
       const workDir = path.dirname(fileName); // 当前文件的绝对路径
-      const linetext = document.lineAt(position).text; // 当前行字符串
+      const reg = /\/\*{1,2}[\s\S]*?\*\//g // 正则匹配注释
+      const originText = document.lineAt(position).text // 当前行字符串
+      const linetext = originText.replace(reg, '') // 去除注释
+      const num_comment = originText.match(reg) ? originText.match(reg).join('').length : 0 // 当前行注释字符串长度
+      position = position.translate(0, -num_comment)
       const q = screeningPath(linetext, position) // 路由别名目标路径
       const z = rootPath(workDir, context) // 项目根目录
-      const u = screeningRelativePath(linetext,position) // 相对路径的目标路径
+      const u = screeningRelativePath(linetext, position) // 相对路径的目标路径
       let targetPath = '' // 要跳转的目标路径
       let isPathInterior = false
       let target = q
@@ -36,7 +40,7 @@ const activate = function (context: vscode.ExtensionContext) {
       return [
         {
           originSelectionRange: target.rang,
-          targetRange: new vscode.Range(0,0,0,0),
+          targetRange: new vscode.Range(0, 0, 0, 0),
           // targetSelectionRange: new vscode.Range(0,0,0,10),
           targetUri: vscode.Uri.file(k)
         }
